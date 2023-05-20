@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import logo from '../assets/logo.svg'
 
-export default function Login(setLogin){
+export default function LoginPage({setLogin}){
     return(
-        <LoginPage>
+        <Page>
             <LogoImg src={logo} alt="Logo ZapRecall"></LogoImg>
             <H1>ZapRecall</H1>
             <LoginButton onClick={() => {
@@ -12,11 +12,12 @@ export default function Login(setLogin){
                 }} data-test="start-btn">
                 Inicial Recall!
             </LoginButton>
-        </LoginPage>
+        </Page>
     )
 }
 
-const LoginPage = styled.div`
+//STYLED COMPONENTS
+const Page = styled.div`
 	width: 100vw;
 	height: 100vh;
 	background: #FB6B6B;

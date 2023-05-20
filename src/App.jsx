@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Login from './components/Login'
+import LoginPage from './components/LoginPage'
 import MainPage from './components/MainPage'
 
 
@@ -11,7 +11,7 @@ function App() {
   if (login === true){
   return (
     <>
-      <Login setLogin={setLogin} />
+      <LoginPage setLogin={setLogin} />
     </>
   )
   }
