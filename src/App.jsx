@@ -6,7 +6,6 @@ import MainPage from './components/MainPage'
 function App() {
   const [login, setLogin] = useState(true);
   const [answered, setAnswered] = useState(0);
-  const [icons, setIcons] = useState([]);
 
   if (login === true){
   return (

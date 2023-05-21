@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from 'react'
 import styled from "styled-components";
 import logo from '../assets/logo.svg'
 import CardQuestions from '../CardQuestions'
@@ -6,6 +7,8 @@ import Card from './Card.jsx'
 import Footer from "./Footer";
 
 export default function MainPage({answered,setAnswered}){
+    const [icons, setIcons] = useState([]);
+
     return(
         <Page>
             <TopDiv>
@@ -22,12 +25,14 @@ export default function MainPage({answered,setAnswered}){
                         card={card}
                         answered={answered}
                         setAnswered={setAnswered}
+                        icons={icons}
+                        setIcons={setIcons}
                     />
                 );
             })}
             </>
 
-            <Footer answered={answered} setAnswered={setAnswered} cardsNumber={CardQuestions.length} />
+            <Footer answered={answered} setAnswered={setAnswered} cardsNumber={CardQuestions.length} icons={icons} />
 
 
         </Page>

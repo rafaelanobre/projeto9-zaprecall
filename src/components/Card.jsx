@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components"
 import starticon from '../assets/starticon.svg'
 import turnicon from '../assets/turnicon.svg'
@@ -8,9 +8,21 @@ import wrongicon from "../assets/wronganswer.svg";
 
 
 
-export default function Card({index,card,answered,setAnswered}){
+export default function Card({index,card,answered,setAnswered,icons,setIcons}){
     const [cardState, setCardState] = useState("closed");
     const [answer, setAnswer] = useState("");
+
+    useEffect(() => {
+        if (cardState === "answered") {
+            if (answer === "right") {
+                setIcons(icons => [...icons, { src: righticon, test: "zap-icon" }]);
+            } else if (answer === "almost") {
+                setIcons(icons => [...icons, { src: almosticon, test: "partial-icon" }]);
+            } else if (answer === "wrong") {
+                setIcons(icons => [...icons, { src: wrongicon, test: "no-icon" }]);
+            }
+        }
+    }, [cardState, answer, setIcons]);
 
     
     function openCard(){
@@ -56,6 +68,7 @@ export default function Card({index,card,answered,setAnswered}){
     }
     if (cardState === "answered") {
         if (answer === "right") {
+            //setIcons(icons => [...icons, { src: "../assets/rightanswer.svg",test:"zap-icon" }]);
             return (
                 <Question data-test="flashcard">
                     <RightText data-test="flashcard-text">
@@ -64,7 +77,9 @@ export default function Card({index,card,answered,setAnswered}){
                     <AnswerIcon src={righticon} data-test="zap-icon"></AnswerIcon>
                 </Question>
             );
+
         } else if (answer === "almost") {
+            //setIcons(icons => [...icons, { src: "../assets/almostanswer.svg",test:"partial-icon" }]);
             return(
                 <Question data-test="flashcard">
                     <AlmostText data-test="flashcard-text">
@@ -74,6 +89,7 @@ export default function Card({index,card,answered,setAnswered}){
                 </Question>
             )
         } else if (answer === "wrong") {
+            //setIcons(icons => [...icons, { src: "../assets/wronganswer.svg",test:"no-icon" }]);
             return(
                 <Question data-test="flashcard">
                     <WrongText data-test="flashcard-text">
