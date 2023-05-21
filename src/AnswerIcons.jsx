@@ -1,6 +1,6 @@
-import right from "./assets/rightanswer";
-import almost from "./assets/almostanswer";
-import wrong from "./assets/wronganswer";
+import right from "./assets/rightanswer.svg";
+import almost from "./assets/almostanswer.svg";
+import wrong from "./assets/wronganswer.svg";
 
 const Icons = [
     { icon: right, datatest: "zap-icon"},
