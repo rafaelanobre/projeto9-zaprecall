@@ -3,8 +3,9 @@ import styled from "styled-components";
 import logo from '../assets/logo.svg'
 import CardQuestions from '../CardQuestions'
 import Card from './Card.jsx'
+import Footer from "./Footer";
 
-export default function MainPage({ListIcons,contAnswered,setAnswered,icons,setIcons}){
+export default function MainPage({ListIcons,answered,setAnswered,icons,setIcons}){
     return(
         <Page>
             <TopDiv>
@@ -16,11 +17,11 @@ export default function MainPage({ListIcons,contAnswered,setAnswered,icons,setIc
             {CardQuestions.map((card, index) => {
                 return (
                     <Card
-                        key={card.id}
+                        key={index}
                         index={index}
                         card={card}
                         ListIcons={ListIcons}
-                        contAnswered={contAnswered}
+                        answered={answered}
                         setAnswered={setAnswered}
                         icons={icons}
                         setIcons={setIcons}
@@ -28,6 +29,8 @@ export default function MainPage({ListIcons,contAnswered,setAnswered,icons,setIc
                 );
             })}
             </>
+
+            <Footer answered={answered} setAnswered={setAnswered} cardsNumber={CardQuestions.length} />
 
 
         </Page>

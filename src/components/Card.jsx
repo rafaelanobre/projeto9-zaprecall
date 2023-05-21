@@ -1,12 +1,12 @@
 import React from "react"
 import styled from "styled-components"
-import logo from '../assets/logo.svg'
+import starticon from '../assets/starticon.svg'
 
-export default function Card({index,card,ListIcons,contAnswered,setAnswered,icons,setIcons}){
+export default function Card({index,card,ListIcons,answered,setAnswered,icons,setIcons}){
     return(
         <Question>
             <ClosedText>Pergunta {index + 1}</ClosedText>
-            <PlayIcon src={logo}></PlayIcon>
+            <PlayIcon src={starticon} ></PlayIcon>
         </Question>
     )
 }
@@ -26,6 +26,7 @@ const Question = styled.div`
 
 const PlayIcon = styled.img`
     width: 20px;
+    color:#333333;
 `;
 
 const ClosedText = styled.h3`

@@ -10,7 +10,7 @@ export default function LoginPage({setLogin}){
             <LoginButton onClick={() => {
                     setLogin(false);
                 }} data-test="start-btn">
-                Inicial Recall!
+                Iniciar Recall!
             </LoginButton>
         </Page>
     )
@@ -20,7 +20,6 @@ export default function LoginPage({setLogin}){
 const Page = styled.div`
 	width: 100vw;
 	height: 100vh;
-	background: #FB6B6B;
     display: flex;
     flex-direction:column;
     align-items: center;
