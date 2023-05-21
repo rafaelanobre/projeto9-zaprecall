@@ -5,7 +5,7 @@ import CardQuestions from '../CardQuestions'
 import Card from './Card.jsx'
 import Footer from "./Footer";
 
-export default function MainPage({ListIcons,answered,setAnswered,icons,setIcons}){
+export default function MainPage({answered,setAnswered}){
     return(
         <Page>
             <TopDiv>
@@ -20,11 +20,8 @@ export default function MainPage({ListIcons,answered,setAnswered,icons,setIcons}
                         key={index}
                         index={index}
                         card={card}
-                        ListIcons={ListIcons}
                         answered={answered}
                         setAnswered={setAnswered}
-                        icons={icons}
-                        setIcons={setIcons}
                     />
                 );
             })}

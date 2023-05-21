@@ -2,16 +2,15 @@ import React, { useState } from "react";
 import styled from "styled-components"
 import starticon from '../assets/starticon.svg'
 import turnicon from '../assets/turnicon.svg'
-import AnswerIcons from '../AnswerIcons'
+import righticon from "../assets/rightanswer.svg";
+import almosticon from "../assets/almostanswer.svg";
+import wrongicon from "../assets/wronganswer.svg";
 
 
 
-export default function Card({index,card,ListIcons,answered,setAnswered,icons,setIcons}){
+export default function Card({index,card,answered,setAnswered}){
     const [cardState, setCardState] = useState("closed");
-    let answer = "";
-    let closedTextColor;
-    let answerIconSrc;
-    let answerIconDataTest;
+    const [answer, setAnswer] = useState("");
 
     
     function openCard(){
@@ -20,11 +19,10 @@ export default function Card({index,card,ListIcons,answered,setAnswered,icons,se
     function turnCard(){
         setCardState("turned");
     }
-    function answerCard(status){
+    function answerCard(status) {
+        setAnswer(status);
         setAnswered(answered + 1);
-        answer = status;
-
-        setCardState("answered")
+        setCardState("answered");
     }
 
 
@@ -57,30 +55,34 @@ export default function Card({index,card,ListIcons,answered,setAnswered,icons,se
         )
     }
     if (cardState === "answered") {
-        
-
         if (answer === "right") {
-            closedTextColor = '#FF3030';
-            answerIconSrc = AnswerIcons[0].icon;
-            answerIconDataTest = AnswerIcons[0].datatest;
+            return (
+                <Question data-test="flashcard">
+                    <RightText data-test="flashcard-text">
+                        Pergunta {index + 1}
+                    </RightText>
+                    <AnswerIcon src={righticon} data-test="zap-icon"></AnswerIcon>
+                </Question>
+            );
         } else if (answer === "almost") {
-            closedTextColor ='#2FBE34';
-            answerIconSrc = AnswerIcons[1].icon;
-            answerIconDataTest = AnswerIcons[1].datatest;
+            return(
+                <Question data-test="flashcard">
+                    <AlmostText data-test="flashcard-text">
+                        Pergunta {index + 1}
+                    </AlmostText>
+                    <AnswerIcon src={almosticon} data-test="partial-icon"></AnswerIcon>
+                </Question>
+            )
         } else if (answer === "wrong") {
-            closedTextColor = '#FF922E';
-            answerIconSrc = AnswerIcons[2].icon;
-            answerIconDataTest = AnswerIcons[2].datatest;
+            return(
+                <Question data-test="flashcard">
+                    <WrongText data-test="flashcard-text">
+                        Pergunta {index + 1}
+                    </WrongText>
+                    <AnswerIcon src={wrongicon} data-test="no-icon"></AnswerIcon>
+                </Question>
+            )
         }
-
-        return (
-            <Question data-test="flashcard">
-                <AnsweredText data-test="flashcard-text" answer={answer}>
-                    Pergunta {index + 1}
-                </AnsweredText>
-                <AnswerIcon data-test={answerIconDataTest}>{answerIconSrc}</AnswerIcon>
-            </Question>
-        );
     }
 }
 
@@ -226,14 +228,28 @@ const ZapButton = styled.button`
 `;
 
 //ANSWERED
-const AnsweredText = styled.h3`
+const RightText = styled.h3`
     font-family: 'Recursive';
     font-weight: 700;
     font-size: 16px;
     text-decoration-line: line-through;
-    color: ${props => props.answer === "right" ? "#FF3030" : props.answer === "almost" ? "#2FBE34" : props.answer === "wrong" ? "#FF922E" : undefined};
+    color: #2FBE34;
+`;
+const AlmostText = styled.h3`
+    font-family: 'Recursive';
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration-line: line-through;
+    color: #FF922E;
+`;
+const WrongText = styled.h3`
+    font-family: 'Recursive';
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration-line: line-through;
+    color: #FF3030;
 `;
 
-const AnswerIcon = styled.div`
+const AnswerIcon = styled.img`
     width: 20px;
 `;
