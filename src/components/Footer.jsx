@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export default function Footer({answered,setAnswered,cardsNumber}){
     return(
-        <FooterDiv>
+        <FooterDiv data-test="footer">
             <Text> {answered}/{cardsNumber} CONCLUÍDOS</Text>
         </FooterDiv>
     )
