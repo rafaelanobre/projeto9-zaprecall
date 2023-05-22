@@ -68,7 +68,6 @@ export default function Card({index,card,answered,setAnswered,icons,setIcons}){
     }
     if (cardState === "answered") {
         if (answer === "right") {
-            //setIcons(icons => [...icons, { src: "../assets/rightanswer.svg",test:"zap-icon" }]);
             return (
                 <Question data-test="flashcard">
                     <RightText data-test="flashcard-text">
@@ -79,7 +78,6 @@ export default function Card({index,card,answered,setAnswered,icons,setIcons}){
             );
 
         } else if (answer === "almost") {
-            //setIcons(icons => [...icons, { src: "../assets/almostanswer.svg",test:"partial-icon" }]);
             return(
                 <Question data-test="flashcard">
                     <AlmostText data-test="flashcard-text">
@@ -89,7 +87,6 @@ export default function Card({index,card,answered,setAnswered,icons,setIcons}){
                 </Question>
             )
         } else if (answer === "wrong") {
-            //setIcons(icons => [...icons, { src: "../assets/wronganswer.svg",test:"no-icon" }]);
             return(
                 <Question data-test="flashcard">
                     <WrongText data-test="flashcard-text">

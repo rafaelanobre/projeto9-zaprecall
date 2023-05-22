@@ -1,9 +1,40 @@
 import React from "react";
 import styled from "styled-components";
+import congrats from "../assets/congrats.svg"
+import sad from "../assets/sad.svg"
 
 export default function Footer({answered,setAnswered,cardsNumber,icons}){
     return(
         <FooterDiv data-test="footer">
+            {answered === cardsNumber && (
+                (() => {
+                    for (let i = 0; i < icons.length; i++) {
+                    if (icons[i].test === "no-icon") {
+                        return (
+                        <DivResult data-test="finish-text">
+                            <TopDivResult>
+                            <ResultIcon src={sad} alt="Putz..."></ResultIcon>
+                            <ResultTitle>Putz...</ResultTitle>
+                            </TopDivResult>
+                            <ResultText>Ainda faltam alguns... Mas não desanime!</ResultText>
+                        </DivResult>
+                        );
+                    }
+                    }
+                    return (
+                    <DivResult data-test="finish-text">
+                        <TopDivResult>
+                        <ResultIcon src={congrats} alt="Parabéns!"></ResultIcon>
+                        <ResultTitle>Parabéns!</ResultTitle>
+                        </TopDivResult>
+                        <ResultText>Você não esqueceu de nenhum flashcard!</ResultText>
+                    </DivResult>
+                    );
+                })()
+            )}
+
+
+
             <Text> {answered}/{cardsNumber} CONCLUÍDOS</Text>
             <IconsDiv>
             {icons.map((icon, index) => {
@@ -55,4 +86,41 @@ const IconsDiv = styled.div`
 const IconBottom = styled.img`
     width: 23px;
     margin: 5px;
+`;
+
+const DivResult = styled.div`
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`;
+
+const TopDivResult = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
+const ResultIcon = styled.img`
+    width: 25px;
+    margin: 15px;
+`;
+
+const ResultTitle= styled.h4`
+    font-family: 'Recursive';
+    font-weight: 700;
+    font-size: 18px;
+    color: #333333;
+`;
+
+const ResultText = styled.p`
+    font-family: 'Recursive';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #333333;
+    margin-bottom: 15px;
 `;
