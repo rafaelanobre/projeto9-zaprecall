@@ -89,7 +89,7 @@ const IconBottom = styled.img`
 `;
 
 const DivResult = styled.div`
-    width: 60%;
+    max-width: 270px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -104,7 +104,7 @@ const TopDivResult = styled.div`
 `
 const ResultIcon = styled.img`
     width: 25px;
-    margin: 15px;
+    margin: 10px;
 `;
 
 const ResultTitle= styled.h4`

@@ -45,7 +45,7 @@ const Page = styled.div`
     flex-direction:column;
     align-items: center;
     justify-content: center;
-    margin-bottom: 140px;
+    margin-bottom: 200px;
 `;
 const TopDiv = styled.header`
     display: flex;

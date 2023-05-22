@@ -134,7 +134,7 @@ const OpenQuestion = styled.div`
     align-items: flex-start;
     justify-content: space-between;
     padding: 20px;
-    background: #FFFFFF;
+    background: #FFFFD4;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
     margin-bottom: 25px;
@@ -166,7 +166,7 @@ const TurnedCard = styled.div`
     align-items: space-between;
     justify-content: center;
     padding: 20px;
-    background: #FFFFFF;
+    background: #FFFFD4;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
     margin-bottom: 25px;
